@@ -1,0 +1,33 @@
+{
+  "name": "teeth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ermekovtariel/Teeth.git"
+  },
+  "author": "Ermekov Tariel <ermekovtariel@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ermekovtariel/Teeth/issues"
+  },
+  "homepage": "https://github.com/ermekovtariel/Teeth#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "config": "^3.3.7",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "express-validator": "^6.14.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.7"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
