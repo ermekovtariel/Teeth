@@ -1,5 +1,6 @@
 {
   "port": 5000,
-  "main": "mongodb+srv://tariel:12tch.12T@cluster0.kv7ym.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-  "jwtSecret": "teeth dantist"
+  "jwtSecret": "teeth",
+  "mongoURI": "mongodb+srv://tariel:12tch.12T@cluster0.kv7ym.mongodb.net/Users",
+  "baseUrl": "http://localhost:3000"
 }
