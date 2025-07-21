@@ -1,6 +1,6 @@
 {
   "port": 5000,
   "jwtSecret": "teeth",
-  "mongoURI": "mongodb+srv://tariel:12tch.12T@cluster0.kv7ym.mongodb.net/Users",
+  "mongoURI": "mongodb+srv://tariel:12tch.12T@cluster0.8v3iooj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
   "baseUrl": "http://localhost:3000"
 }

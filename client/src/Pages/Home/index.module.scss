@@ -1,0 +1,17 @@
+@import '../../styles/variables.scss';
+
+.container{
+    margin: $mainM;
+}
+.cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $mainM;
+}
+@media screen and (max-width: 900px){
+    .cards{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $mainM;
+    }
+}

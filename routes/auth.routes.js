@@ -4,6 +4,7 @@ const config = require('config');
 const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator');
 const User = require('../models/User');
+const authMiddleware = require('../middleware/auth.middleware'); // Создай этот middleware ниже, если нет
 const router = Router();
 
 //! /api/auth/register
@@ -39,13 +40,20 @@ router.post(
       const user = new User({ email, password: hashedPassword });
 
       await user.save();
-      const token = jwt.sign({ userId: user.id }, config.get('jwtSecret'), {
-        expiresIn: '1h',
-      });
+      const token = jwt.sign({ userId: user.id }, config.get('jwtSecret'));
 
       res
         .status(201)
-        .json({ token, userId: user.id, message: 'Пользователь создан' });
+        .json({ 
+          token, 
+          userId: user.id, 
+          name: user.name, 
+          surname: user.surname, 
+          city: user.city, 
+          birthday: user.birthday, 
+          sex: user.sex, 
+          role: user.role, 
+        });
     } catch (e) {
       res
         .status(500)
@@ -89,11 +97,18 @@ router.post(
           .json({ message: 'Неверный пароль, попробуйте снова' });
       }
 
-      const token = jwt.sign({ userId: user.id }, config.get('jwtSecret'), {
-        expiresIn: '1h',
-      });
+      const token = jwt.sign({ userId: user.id }, config.get('jwtSecret'));
 
-      res.json({ token, userId: user.id });
+      res.json({
+        name: user.name, 
+        surname: user.surname, 
+        city: user.city, 
+        birthday: user.birthday, 
+        sex: user.sex, 
+        role: user.role, 
+        token, 
+        userId: user.id 
+      });
     } catch (e) {
       res
         .status(500)

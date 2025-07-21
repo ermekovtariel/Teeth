@@ -1,0 +1,10 @@
+@import '../styles/variables.scss';
+
+.root{
+    padding: $mainP;
+
+    .header{
+        color: $tColor;
+        border-radius: $bRadius;
+    }
+}

@@ -1,0 +1,30 @@
+@import '../../styles/variables.scss';
+
+.root{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    
+    .header{
+        color: $tColor;
+        border-radius: $bRadius;
+    }
+    .container{
+        margin: $mainM;
+        // padding-bottom: $mainP;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+    
+        .logo{
+            svg{
+                width: 25px;
+                height: 25px;
+            }
+        }
+        .logoTitle{
+            margin: 0;
+        }
+    }
+}

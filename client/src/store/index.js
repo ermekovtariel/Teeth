@@ -1,13 +1,41 @@
-import { createStore, compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import { configureStore } from "@reduxjs/toolkit"
+import { combineReducers } from "redux"
+import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from "redux-persist"
+import persistReducer from "redux-persist/es/persistReducer"
+import storage from "redux-persist/lib/storage"
+import { WBapi } from "./Api"
 
-import rootReducer from './reducer';
+import authSlice from "./Auth/authSlice"
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const rootReducer = combineReducers({
+	auth: authSlice,
+})
 
-const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
-);
+const persistConfig = {
+	key: "TISH",
+	storage,
+	whitelist: ["settingsColumns"],
+}
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+export const setupStore = () => {
+	return configureStore({
+		reducer: persistedReducer,
+		middleware: getDefaultMiddleware =>
+			getDefaultMiddleware({
+				serializableCheck: {
+					ignoredActions: [
+						FLUSH,
+						REHYDRATE,
+						PAUSE,
+						PERSIST,
+						PURGE,
+						REGISTER,
+						"userTariff/setUserTariff",
+					],
+					ignoredActionsPaths: ["userTariff.tariffExpiration", "payload.error"],
+				},
+			}).concat(WBapi.middleware),
+	})
+}

@@ -1,0 +1,18 @@
+@import "../../styles/variables.scss";
+.root{
+    min-width: 240px;
+    color: $tColor;
+    border-radius: $bRadius;
+    padding: $mainP;
+    background-color: $mainColor;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #fff;
+  
+    .title{
+        color: #fff;
+    }
+    .description{
+        color: #fff;
+    }
+}
+
